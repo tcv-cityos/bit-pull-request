@@ -11038,7 +11038,7 @@ const run = (githubToken, repo, owner, prNumber, laneName, wsdir, args) => __awa
         const buildFlag = process.env.RIPPLE === "true" ? [] : ["--build"];
         yield (0, exec_1.exec)('bit', ['snap', '-m', snapMessageText, ...buildFlag, ...args], { cwd: wsdir });
         try {
-            yield (0, exec_1.exec)('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--remote', '--silent', '--force', ...args], { cwd: wsdir });
+            yield (0, exec_1.exec)('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
         }
         catch (error) {
             console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
