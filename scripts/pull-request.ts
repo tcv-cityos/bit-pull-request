@@ -130,7 +130,7 @@ const run = async (
     await exec('bit', ['snap', '-m', snapMessageText, ...buildFlag, ...args], { cwd: wsdir });
     
     try {
-      await exec('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--remote', '--silent', '--force', ...args], { cwd: wsdir });
+      await exec('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
     } catch (error) {
       console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
     }
