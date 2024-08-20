@@ -11037,12 +11037,11 @@ const run = (githubToken, repo, owner, prNumber, laneName, wsdir, args) => __awa
         const snapMessageText = yield createSnapMessageText(githubToken, repo, owner, prNumber);
         const buildFlag = process.env.RIPPLE === "true" ? [] : ["--build"];
         yield (0, exec_1.exec)('bit', ['snap', '-m', snapMessageText, ...buildFlag, ...args], { cwd: wsdir });
-        try {
-            yield (0, exec_1.exec)('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
-        }
-        catch (error) {
-            console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
-        }
+        // try {
+        //   await exec('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
+        // } catch (error) {
+        //   console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
+        // }
         yield (0, exec_1.exec)('bit', ['export', ...args], { cwd: wsdir });
         postOrUpdateComment(githubToken, repo, owner, prNumber, laneName);
     }

@@ -128,12 +128,12 @@ const run = async (
 
     const buildFlag = process.env.RIPPLE === "true" ? [] : ["--build"]
     await exec('bit', ['snap', '-m', snapMessageText, ...buildFlag, ...args], { cwd: wsdir });
-    
-    try {
-      await exec('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
-    } catch (error) {
-      console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
-    }
+
+    // try {
+    //   await exec('bit', ['lane', 'remove', `${org}.${scope}/${laneName}`, '--silent', '--force', ...args], { cwd: wsdir });
+    // } catch (error) {
+    //   console.log(`Cannot remove bit lane: ${error}. Lane may not exist`);
+    // }
     await exec('bit', ['export', ...args], { cwd: wsdir });
 
     postOrUpdateComment(githubToken, repo, owner, prNumber, laneName);
